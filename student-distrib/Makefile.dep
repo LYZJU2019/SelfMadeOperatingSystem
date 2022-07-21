@@ -1,0 +1,42 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+exception_handler_entries.o: exception_handler_entries.S \
+  exception_handler_entries.h
+interrupt_handler_entries.o: interrupt_handler_entries.S \
+  interrupt_handler_entries.h
+syscall_handler_entry.o: syscall_handler_entry.S x86_desc.h types.h
+x86_desc.o: x86_desc.S x86_desc.h types.h
+exception_handler.o: exception_handler.c exception_handler.h lib.h \
+  types.h syscall_handler.h fs.h multiboot.h
+fs.o: fs.c fs.h types.h multiboot.h lib.h terminal.h keyboard.h \
+  syscall_handler.h rtc.h
+GUI.o: GUI.c GUI.h lib.h types.h VGA_image.h VGA.h VGA_font.h VBE.h \
+  paging.h terminal.h keyboard.h syscall_handler.h fs.h multiboot.h
+i8259.o: i8259.c i8259.h types.h lib.h
+idt.o: idt.c idt.h x86_desc.h types.h exception_handler_entries.h \
+  interrupt_handler_entries.h
+interrupt_handler.o: interrupt_handler.c interrupt_handler.h keyboard.h \
+  types.h rtc.h fs.h multiboot.h pit.h lib.h mouse.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h i8259.h debug.h \
+  idt.h keyboard.h pit.h terminal.h syscall_handler.h fs.h rtc.h paging.h \
+  GUI.h VGA_image.h mouse.h
+keyboard.o: keyboard.c keyboard.h types.h terminal.h syscall_handler.h \
+  fs.h multiboot.h i8259.h lib.h VGA_image.h
+lib.o: lib.c lib.h types.h terminal.h keyboard.h syscall_handler.h fs.h \
+  multiboot.h mouse.h VBE.h VGA_image.h VGA_font.h VGA.h
+mouse.o: mouse.c mouse.h types.h keyboard.h i8259.h lib.h terminal.h \
+  syscall_handler.h fs.h multiboot.h VGA_image.h
+paging.o: paging.c paging.h types.h
+pit.o: pit.c pit.h i8259.h types.h syscall_handler.h fs.h multiboot.h \
+  terminal.h keyboard.h lib.h VGA.h
+rtc.o: rtc.c i8259.h types.h lib.h rtc.h fs.h multiboot.h
+syscall_handler.o: syscall_handler.c paging.h types.h syscall_handler.h \
+  fs.h multiboot.h terminal.h keyboard.h x86_desc.h lib.h rtc.h
+terminal.o: terminal.c terminal.h types.h keyboard.h syscall_handler.h \
+  fs.h multiboot.h lib.h paging.h i8259.h x86_desc.h VGA_font.h VBE.h \
+  VGA.h VGA_image.h
+VBE.o: VBE.c VBE.h types.h lib.h
+VGA.o: VGA.c VGA.h lib.h types.h VGA_image.h VBE.h
+VGA_font.o: VGA_font.c VGA_font.h types.h VBE.h VGA.h lib.h VGA_image.h \
+  paging.h terminal.h keyboard.h syscall_handler.h fs.h multiboot.h
+VGA_image.o: VGA_image.c VGA_image.h types.h lib.h VBE.h fs.h multiboot.h \
+  paging.h VGA_font.h VGA.h terminal.h keyboard.h syscall_handler.h
