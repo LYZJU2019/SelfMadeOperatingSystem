@@ -15,70 +15,31 @@ I developed the core of an operating system, including the boot stage setup, pag
 
 ## Advanced features
 
+- [x] Add more hardware features such as PS2 mouse, sound drive.
+
 - [x] Writable fs
   
-  - [x] Disk read
-    
-    [ATA PIO Mode - OSDev Wiki](https://wiki.osdev.org/ATA_PIO_Mode)
+  - [x] Implemented hard disk driver to support reading chunks of data from the hard disk and writing chunks of data into the hard disk
   
-          <mark>seems good</mark>
-  
-  - [x] Disk Write
-    
-    [ATA PIO Mode - OSDev Wiki](https://wiki.osdev.org/ATA_PIO_Mode)
-    
-    Plan to test after finishing EXT2 parser 
-  
-  - [x] EXT2 parser
-    
-     [The Second Extended File System (nongnu.org)](https://www.nongnu.org/ext2-doc/ext2.html)
-    
-    - [x] EXT2 read_file
-    
-    - [x] EXT2 create_file
-    
-    - [x] EXT2 modify_file
-    
-    - [x] EXT2 delete_file
+  - [x] Implemented The Second Extended File System (EXT2) parser to support `read`, `open`, `close`, `write` and `delete` file operations
 
 - [x] GUI
   
-  - [x] VBE & VGA hardware
-    
-    [Bochs VBE Extensions - OSDev Wiki](https://wiki.osdev.org/Bochs_Graphics_Adaptor)
-    
-    `info pci` on test machine
-    
-    add `-vga std` in QEMU CMDLINE
+  - [x] Implemented VBE & VGA hardware drivers
   
-  - [x] Display images
+  - [x] Able to load and display images stored in the hard disk as a file.
+
+  - [x] Able to draw icons, buttons on the screen to support mouse click
+  
+  - [x] Able to display graphical text on the screen
     
-    [Loading Icons - OSDev Wiki](https://wiki.osdev.org/Loading_Icons)
-  
-  - [x] Draw icons, buttons
-    
-    [Loading Icons - OSDev Wiki](https://wiki.osdev.org/Loading_Icons)
-  
-  - [x] Draw text
-    
-    [VGA Fonts - OSDev Wiki](https://wiki.osdev.org/VGA_Fonts)
-  
-  - [x] Draw status bar, Windows
-  
   - [x] Graphical Shell
   
-  - [x] With mouse integrated
-    
-    [Mouse Input - OSDev Wiki](https://wiki.osdev.org/Mouse_Input)
+  - [x] Display status bar at the bottom of the screen and create application windows (for example, multiple overlapping terminal windows which can be dragged by mouse)
 
-- [x] Buddy allocation
+- [x] Buddy allocation system
   
-    [Buddy memory allocation - Wikipedia](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
+  - [x] Implemented buddy allocation algorithm similar to the real Linux operating system
   
-  - [x] Algorithmic correct
-  
-  - [x] Actually allocated to user programs
+  - [x] Able to allocate reasonable amount of free memory space to the user programs when there's a request (system call) from user programs
 
-- [x] Sound drive
-  
-  [Sound Blaster 16 - OSDev Wiki](https://wiki.osdev.org/Sound_Blaster_16) (REMEMBER TO APPEND HARDWARE CONFIG INTO QEMU CMDLINE)
